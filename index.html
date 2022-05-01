@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+
+<!-- 16h16 - 26 03 2022 -->
+
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>GO Staking</title>
+	<script src="node_modules/web3/dist/web3.min.js"></script>
+	<script type="text/javascript" src="./Msource/data.json"></script>
+	<link rel="preconnect" href="https://fonts.googleapis.com/">
+	<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+	<link href="./Msource/css2" rel="stylesheet">
+	<link rel="stylesheet" href="./Msource/style.css">
+</head>
+<body>
+	<header >
+		<div class="container">
+			<div class="row align-center">
+				<div class="col logo">
+					<h1>GO-staking</h1>
+				</div>
+				<div class="col menu">
+					<ul>
+						<li>
+							<button onclick="load()" class="btn-WalletConnect">Connect Wallet</button>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</header>
+	<div class="main">
+		<div class="container">
+			<div class="row">
+				<!-- <div class="col col-right d-flex justify-end"> -->
+					<div class="staking-pool-form">
+							<div class="row">
+								
+								<div class="form-group">
+									<div class="group-label">
+										<select onchange="updateUI()" id="tokenStuff" class="addressIf"  >
+											<option value="BUSD">BUSD</option>
+											<option value="USDT">USDT</option>
+										</select>
+										<a class="addressIf"  target="_blank" id = "_yourAddress"> Loading...</a>
+										
+						
+									</div>
+									<div class="group-content">
+										<div class="box">
+											<div class="box__label label">Balance</div>
+											<div class="box__value">
+												<span class="value" id = "_yourBalance">Loading...</span><span class="unit" id = "_yourMethod">$</span>
+											</div>
+										</div>
+										<div class="box">
+											<div class="box__label label">Reward</div>
+											<div class="box__value">
+												<span class="value" id ="_yourReward">Loading...</span><span class="unit">$</span>
+											</div>
+										</div>
+										<div class="box">
+											<div class="box__label label">Token</div>
+											<div class="box__value">
+												<span class="value" id ="_yourToken">Loading...</span><span class="unit">BIS</span>
+											</div>
+										</div>
+										
+									</div>
+									<div class="your-number">
+										<span class="label">Your Last Lucky Number</span>
+										<span class="inputN" type="number" min="0" step="1" id = "_lastRewardCode">...</span>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="form-control staking-option">
+									<span class="label">Staking option</span>
+									<div class="select-dropdown staking-option-dropdown">
+										<span class="dropdown-label">Select option</span>
+										<ul class="dropdown-list hidden" onclick="updateUI()">
+											<li data-val="">Select option</li>
+											<li data-val="x10" class="selected">Go Staking</li>
+											<li data-val="auth-deposit">Authentication Deposit</li>
+											<li data-val="withdraw-token">Withdraw Token</li>
+											<li data-val="withdraw-reward">Withdraw Reward</li>
+											<li data-val="staking-to-token">Staking to Token</li>
+										</ul>
+									</div>
+									<select class="hidden" name="staking_option" id="staking_option">
+										<option value="" selected="">Select option</option>
+										<option value="x10">Go Staking</option>
+										<option value="auth-deposit">Authentication Deposit</option>
+										<option value="withdraw-token">Withdraw Token</option>
+										<option value="withdraw-reward">Withdraw Reward</option>
+										<option value="staking-to-token">Staking to Token</option>
+									</select>
+								</div>
+								<div class="form-control withdraw-token hidden">
+									<div class="box">
+										<div class="box__label label">Token Balance:</div>
+										<div class="box__value">
+											<span class="value" id ="_tokenB">Loading...</span><span class="unit" id="_tokenSymbol1">MESK</span>
+										</div>
+									</div>
+									<div class="box">
+										<div class="box__label label">Reward Earn by Token:</div>
+										<div class="box__value">
+											<span class="value" id ="_earnByToken">Loading...</span><span class="unit">$</span>
+										</div>
+									</div>
+								</div>
+								<div class="form-control withdraw-reward hidden">
+									<div class="box">
+										<div class="box__label label">Reward Balance Affter Withdraw:</div>
+										<div class="box__value">
+											<span class="value" id ="_rewardBalance">Loading...</span><span class="unit">$</span>
+										</div>
+									</div>
+								</div>
+								<div class="form-control staking-to-token hidden">
+									<div class="box">
+										<div class="box__label label">Token Earn:</div>
+										<div class="box__value">
+											<span class="value" id ="_tokenEarn">Loading...</span><span class="unit" id = "_tokenSymbol2">BIS</span>
+										</div>
+									</div>
+								</div>
+								<div class="form-control auth-deposit hidden">
+									<div class="box">
+										<div class="box__label label">Balance Affter Deposit</div>
+										<div class="box__value">
+											<span class="value" id ="_deposit">Loading...</span>
+										</div>
+									</div>
+								</div>
+
+								<div class="form-control x10">
+									<div class="options">
+										<div class="numbers-option option-x10">
+											<div class="x10Label">
+												<!-- <span style="color: rgba(255,255,255,.75)">x3</span>
+												<span style="color: rgba(80, 100, 235, 1)">- x5</span>
+												<span style="color: red">- x10</span> -->
+											</div>
+											<div class="numbers">
+												<div>
+													<span class="number-x1">x1</span>
+													<span class="number-x2">x2</span>
+													<span class="number-x3">x3</span>
+													<span class="number-x4">x4</span>
+													<span class="number-x5">x5</span>
+													<span class="number-x6">x6</span>
+													<span class="number-x7">x7</span>
+													<span class="number-x8">x8</span>
+												</div>
+												<div>	
+													<span class="number-1">11</span>
+													<span class="number-2">22</span>
+													<span class="number-3">33</span>
+													<span class="number-4">44</span>
+													<span class="number-5">55</span>
+													<span class="number-6">66</span>
+													<span class="number-7">77</span>
+													<span class="number-8">88</span>
+													
+												</div>
+
+												<div>
+													<span class="number-1">19</span>
+													<span class="number-2">29</span>
+													<span class="number-3">39</span>
+													<span class="number-4">49</span>
+													<span class="number-5">59</span>
+													<span class="number-6">69</span>
+													<span class="number-7">79</span>
+													<span class="number-8">89</span>
+												</div>
+												<div>
+													<span class="number-10">99</span>
+												</div>
+											</div>
+										</div>
+									
+									</div>
+									
+								</div>
+								<div class="form-control amount">
+									<span class="label">Amount</span>
+									<input type="number" min="1" step="1" id = "_amount" oninput="readingInput()">
+								</div>
+								<button onclick="onClickButton()" class="btn-submit">Continue</button>
+							</div>
+				
+					</div>
+				<!-- </div> -->
+				<div class="about-Project">
+					<br />
+					<h2 class="headertekst" >About Project</h2>
+					<!-- <p class="text1">When you staking, the entire benefits from it</p> -->
+					
+					<p class="text2" >Public! <a class="blue" href="https://testnet.bscscan.com/address/0x522e78D70dFCCFb16048f90656f3ef8d8724032f" >Whitepaper</a><br></p>
+					<p class="text2" >UserGuide <a class="blue" href="https://testnet.bscscan.com/address/0x522e78D70dFCCFb16048f90656f3ef8d8724032f" >HERE! </a><br></p>
+					<p class="text2" >Smart Contracts <a class="blue" href="https://testnet.bscscan.com/address/0x522e78D70dFCCFb16048f90656f3ef8d8724032f" >Anyone can check at Anytime!</a><br></p>
+					<div class="benefit-list">
+						
+						<div class="benefit-item">
+							<div class="icon-box__icon">
+								<img src="./Msource/coin.png" alt="Mega Staking">
+							</div>
+							<div class="icon-box-content">
+								<!-- <div class="icon-box__heading">20%</div> -->
+								<div class="icon-box__text">Token Supply</div>
+								
+								<div class="box__value">
+									<span class="value" id ="_tokenSupply">Loading...</span><span class="unit" id = "_tokenSymbol3">BIS</span>
+								</div>
+							</div>
+						</div>
+						<div class="benefit-item">
+							<div class="icon-box__icon">
+								<img src="./Msource/medal.png" alt="Mega Staking">
+							</div>
+							<div class="icon-box-content">
+								<!-- <div class="icon-box__heading">80%</div> -->
+								<div class="icon-box__text">Staking Pools</div>
+								<div class="box__value">
+									<span class="value" id ="_stakingPools">Loading...</span><span class="unit">$</span><br>
+								</div>
+							</div>
+						</div>
+						<div class="benefit-item">
+							<div class="icon-box__icon">
+								<img src="./Msource/BUSD-BLUE.png" alt="Mega Staking">
+							</div>
+							<div class="icon-box-content">
+								<!-- <div class="icon-box__heading">80%</div> -->
+								<div class="icon-box__text">BUSD Balance</div>
+								<div class="box__value">
+									<span class="value" id ="_busdBalance">Loading...</span><span class="unit">$</span><br>
+								</div>
+							</div>
+						</div>
+						<div class="benefit-item">
+							<div class="icon-box__icon">
+								<img src="./Msource/USDT-BLUE.png" alt="Mega Staking">
+							</div>
+							<div class="icon-box-content">
+								<!-- <div class="icon-box__heading">80%</div> -->
+								<div class="icon-box__text">USDT Balance</div>
+								<div class="box__value">
+									<span class="value" id ="_usdtBalance">Loading...</span><span class="unit">$</span><br>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+			let event = new Event('change'),
+			stakingOptionsEl = document.getElementById('staking_option'),
+			dropdownEl = document.querySelector('.staking-option-dropdown'),
+			dropdownLabelEl = dropdownEl.querySelector('.dropdown-label'),
+			dropdownListEl = dropdownEl.querySelector('.dropdown-list'),
+			dropdownItemsEl = dropdownListEl.querySelectorAll('li');
+			dropdownLabelEl.onclick = function() {
+				if ( dropdownListEl.classList.contains('hidden') ) {
+					dropdownListEl.classList.remove('hidden');
+				} else {
+					dropdownListEl.classList.add('hidden');
+				}
+			}
+			dropdownItemsEl.forEach( function( dropdownItemEl ) {
+				dropdownItemEl.onclick = function(e) {
+					let val = dropdownItemEl.getAttribute('data-val');
+					stakingOptionsEl.value = val;
+					stakingOptionsEl.dispatchEvent( event );
+
+					dropdownListEl.classList.add('hidden');
+					dropdownLabelEl.innerHTML = dropdownItemEl.innerHTML;
+
+					for ( let i = 0, j = dropdownItemsEl.length; i < j; i++ ) {
+						dropdownItemsEl[i].classList.remove( 'selected' );
+					}
+					this.classList.add('selected');
+				}
+			} );
+			stakingOptionsEl.onchange = function() {
+				let val = stakingOptionsEl.value;
+
+				document.querySelector('.withdraw-token').classList.add('hidden');
+				document.querySelector('.withdraw-reward').classList.add('hidden');
+				document.querySelector('.staking-to-token').classList.add('hidden');
+				document.querySelector('.auth-deposit').classList.add('hidden');
+				document.querySelector('.x10').classList.add('hidden');
+
+				if ( val !== '' ) {
+					document.querySelector('.' + val).classList.remove('hidden');
+				}
+			}
+			
+			document.addEventListener('click', function(e){
+				if ( dropdownLabelEl.contains( e.target ) ) {
+					return;
+				}
+				if ( ! dropdownListEl.contains( e.target ) ) {
+					dropdownListEl.classList.add('hidden')
+				}
+			});
+		});
+	</script>
+	<script type="text/javascript" src="./Msource/engine.js"></script>
+</body></html>

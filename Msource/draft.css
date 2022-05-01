@@ -1,0 +1,121 @@
+.form-control.x10 .numbers .number-x1 {
+	border: 1px solid rgba(255, 255, 255, 0.95);
+	box-sizing: border-box;
+	border-radius: 6px;
+	font-size: 16px;
+	line-height: 18px;
+	min-width: 26px;
+	height: 26px;
+	display: block;
+	text-align: center;
+	line-height: 26px;
+	margin: 0 2px 2px 0;
+}
+.form-control.x10 .numbers .number-x2 {
+	border: 1px solid rgba(255,255,255,0.95);
+	box-sizing: border-box;
+	border-radius: 6px;
+	font-size: 16px;
+	line-height: 18px;
+	min-width: 26px;
+	height: 26px;
+	display: block;
+	text-align: center;
+	line-height: 26px;
+	margin: 0 2px 2px 0;
+}
+.form-control.x10 .numbers .number-x3 {
+	border: 1px solid rgba(255,255,255,0.95);
+	box-sizing: border-box;
+	border-radius: 6px;
+	font-size: 16px;
+	line-height: 18px;
+	min-width: 26px;
+	height: 26px;
+	display: block;
+	text-align: center;
+	line-height: 26px;
+	margin: 0 2px 2px 0;
+}
+.form-control.x10 .numbers .number-x4 {
+	border: 1px solid rgba(255,255,255,0.95);
+	box-sizing: border-box;
+	border-radius: 6px;
+	font-size: 16px;
+	line-height: 18px;
+	min-width: 26px;
+	height: 26px;
+	display: block;
+	text-align: center;
+	line-height: 26px;
+	margin: 0 2px 2px 0;
+}
+.form-control.x10 .numbers .number-x5 {
+	border: 1px solid rgba(255,255,255,0.95);
+	box-sizing: border-box;
+	border-radius: 6px;
+	font-size: 16px;
+	line-height: 18px;
+	min-width: 26px;
+	height: 26px;
+	display: block;
+	text-align: center;
+	line-height: 26px;
+	margin: 0 2px 2px 0;
+}
+.form-control.x10 .numbers .number-x6 {
+	border: 1px solid rgba(255,255,255,0.95);
+	box-sizing: border-box;
+	border-radius: 6px;
+	font-size: 16px;
+	line-height: 18px;
+	min-width: 26px;
+	height: 26px;
+	display: block;
+	text-align: center;
+	line-height: 26px;
+	margin: 0 2px 2px 0;
+}
+.form-control.x10 .numbers .number-x7 {
+	border: 1px solid rgba(255,255,255,0.95);
+	box-sizing: border-box;
+	border-radius: 6px;
+	font-size: 16px;
+	line-height: 18px;
+	min-width: 26px;
+	height: 26px;
+	display: block;
+	text-align: center;
+	line-height: 26px;
+	margin: 0 2px 2px 0;
+}
+.form-control.x10 .numbers .number-x8 {
+	border: 1px solid rgba(255,255,255,0.95);
+	box-sizing: border-box;
+	border-radius: 6px;
+	font-size: 16px;
+	line-height: 18px;
+	min-width: 26px;
+	height: 26px;
+	display: block;
+	text-align: center;
+	line-height: 26px;
+	margin: 0 2px 2px 0;
+}
+
+.form-control.x10 .numbers .number-x10 {
+	border: 1px solid rgba(255,255,255,0.95);
+	box-sizing: border-box;
+	border-radius: 64px;
+	font-size: 42px;
+	line-height: 32px;
+	min-width: 64px;
+	height: 64px;
+	display: block;
+	text-align: center;
+	line-height: 62px;
+	/* margin: 16px 4px 4px 0; */
+	margin-top: 5px;
+	margin-left: auto;
+	margin-right: auto;
+}
